@@ -1,8 +1,8 @@
 import { useState } from "react";
 import ExpenseFilter from "./components/jsx/ExpenseFilter";
-import Expenses from "./components/jsx/Expenses";
 import NewExpense from "./components/jsx/NewExpense";
 import Card from "./components/jsx/Card";
+import ExpensesList from "./components/jsx/ExpensesList";
 
 function App() {
 
@@ -67,24 +67,7 @@ function App() {
     //return filtered expenses 
     const filteredExpenses = expenses.filter((e) => e.date.getFullYear().toString() === filteredYear
     )
-
-    //if filtered expenses.length === 0 return message
-    let pageContent = <p>No expenses for this year</p>;
-    if (filteredExpenses.length > 0) {
-        pageContent = filteredExpenses
-        .map((e) => {
-            return (
-                <Expenses
-                    title={e.title}
-                    amount={e.amount}
-                    date={e.date}
-                    key={e.id}
-                ></Expenses>
-            );
-        })
-        
-    }
-    
+ 
 
     //RENDER COMPONENT
     //----------------------------------
@@ -94,7 +77,7 @@ function App() {
             <Card className="expenses">
                 <ExpenseFilter currentYearSelected={filteredYear} onChangeFilter={handleFilterChange} />
 
-                {pageContent}
+                <ExpensesList expenses={filteredExpenses}/>
             </Card>
         </div>
     );

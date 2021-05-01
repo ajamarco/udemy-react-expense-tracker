@@ -1,6 +1,3 @@
-//react
-import {useState} from 'react';
-
 //css files
 import "../styles/ExpenseItem.css";
 
