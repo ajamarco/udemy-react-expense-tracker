@@ -10,12 +10,6 @@ const ExpenseFilter = ({onChangeFilter, currentYearSelected}) => {
         onChangeFilter(e.target.value);
     };
 
-    //--------------------------------------
-    //to be used when component loaded
-    //   useEffect(() => {
-    //     console.log();
-    // }, []);
-
     return (
         <div className="expenses-filter">
             <div className="expenses-filter__control">

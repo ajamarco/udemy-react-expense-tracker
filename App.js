@@ -4,7 +4,7 @@ import Expenses from "./components/jsx/Expenses";
 import NewExpense from "./components/jsx/NewExpense";
 import Card from "./components/jsx/Card";
 
-function App(props) {
+function App() {
 
     //expenses state and initial value
     const [expenses, setExpenses] = useState([
