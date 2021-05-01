@@ -4,7 +4,7 @@ import Expenses from "./components/jsx/Expenses";
 import NewExpense from "./components/jsx/NewExpense";
 import Card from "./components/jsx/Card";
 
-function App(props) {
+function App() {
 
     //expenses state and initial value
     const [expenses, setExpenses] = useState([
@@ -64,26 +64,37 @@ function App(props) {
         });
     };
 
+    //return filtered expenses 
+    const filteredExpenses = expenses.filter((e) => e.date.getFullYear().toString() === filteredYear
+    )
+
+    //if filtered expenses.length === 0 return message
+    let pageContent = <p>No expenses for this year</p>;
+    if (filteredExpenses.length > 0) {
+        pageContent = filteredExpenses
+        .map((e) => {
+            return (
+                <Expenses
+                    title={e.title}
+                    amount={e.amount}
+                    date={e.date}
+                    key={e.id}
+                ></Expenses>
+            );
+        })
+        
+    }
+    
+
+    //RENDER COMPONENT
+    //----------------------------------
     return (
         <div>
             <NewExpense onAddNewExpense={handleAddNewExpense} />
             <Card className="expenses">
                 <ExpenseFilter currentYearSelected={filteredYear} onChangeFilter={handleFilterChange} />
 
-                {expenses
-                    .filter(
-                        (e) => e.date.getFullYear().toString() === filteredYear
-                    )
-                    .map((e) => {
-                        return (
-                            <Expenses
-                                title={e.title}
-                                amount={e.amount}
-                                date={e.date}
-                                key={e.id}
-                            ></Expenses>
-                        );
-                    })}
+                {pageContent}
             </Card>
         </div>
     );
