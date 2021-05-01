@@ -41,6 +41,7 @@ function App() {
     //-----------------------------------------------
     const handleFilterChange = (filteredValue) => {
         setFilteredYear(filteredValue);
+        console.log('filtered', filteredExpenses.length);
     };
 
     //handle adding new expense
@@ -64,26 +65,37 @@ function App() {
         });
     };
 
+    //return filtered expenses 
+    const filteredExpenses = expenses.filter((e) => e.date.getFullYear().toString() === filteredYear
+    )
+
+    //if filtered expenses.length === 0 return message
+    let pageContent = <p>No expenses for this year</p>;
+    if (filteredExpenses.length > 0) {
+        pageContent = filteredExpenses
+        .map((e) => {
+            return (
+                <Expenses
+                    title={e.title}
+                    amount={e.amount}
+                    date={e.date}
+                    key={e.id}
+                ></Expenses>
+            );
+        })
+        
+    }
+    
+
+    //RENDER COMPONENT
+    //----------------------------------
     return (
         <div>
             <NewExpense onAddNewExpense={handleAddNewExpense} />
             <Card className="expenses">
                 <ExpenseFilter currentYearSelected={filteredYear} onChangeFilter={handleFilterChange} />
 
-                {expenses
-                    .filter(
-                        (e) => e.date.getFullYear().toString() === filteredYear
-                    )
-                    .map((e) => {
-                        return (
-                            <Expenses
-                                title={e.title}
-                                amount={e.amount}
-                                date={e.date}
-                                key={e.id}
-                            ></Expenses>
-                        );
-                    })}
+                {pageContent}
             </Card>
         </div>
     );
