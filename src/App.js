@@ -73,7 +73,7 @@ function App() {
     //----------------------------------
     return (
         <div>
-            <NewExpense onAddNewExpense={handleAddNewExpense} />
+            <NewExpense onAddNewExpense={handleAddNewExpense}/>
             <Card className="expenses">
                 <ExpenseFilter currentYearSelected={filteredYear} onChangeFilter={handleFilterChange} />
 

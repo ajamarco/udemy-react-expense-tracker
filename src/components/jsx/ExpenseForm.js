@@ -35,8 +35,7 @@ const ExpenseForm = (props) => {
         });
         props.onSaveExpenseData(newExpense);
 
-        //set focus to the new expense title
-        document.getElementById('new-expense-title').focus();
+        props.onChangeShowForm();
     };
 
     return (
@@ -77,7 +76,7 @@ const ExpenseForm = (props) => {
             </div>
             <div className="new-expense__actions">
                 <button type="submit">Add Expense</button>
-                <button>Cancel</button>
+                <button onClick={props.onChangeShowForm}>Cancel</button>
             </div>
         </form>
     );
