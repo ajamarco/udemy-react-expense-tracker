@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/ExpenseForm.css";
 
 const ExpenseForm = (props) => {
+
+    useEffect(() => {
+        document.getElementById('new-expense-title').focus();
+    }, [])
+
     const [newExpense, setNewExpense] = useState({
         "new-expense-title": "",
         "new-expense-amount": "",
@@ -72,6 +77,7 @@ const ExpenseForm = (props) => {
             </div>
             <div className="new-expense__actions">
                 <button type="submit">Add Expense</button>
+                <button>Cancel</button>
             </div>
         </form>
     );
