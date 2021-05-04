@@ -21,7 +21,7 @@ const NewExpense = ({ onAddNewExpense}) => {
     }
 
     let content = <button onClick={handleShowForm}>Add New Expense</button>
-    if(showForm == true) {
+    if(showForm === true) {
         content = <ExpenseForm onSaveExpenseData={handleSaveExpenseData} onChangeShowForm={handleShowForm}/>;
     }
 
