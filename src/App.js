@@ -3,6 +3,7 @@ import ExpenseFilter from "./components/jsx/ExpenseFilter";
 import NewExpense from "./components/jsx/NewExpense";
 import Card from "./components/jsx/Card";
 import ExpensesList from "./components/jsx/ExpensesList";
+import ExpensesChart from "./components/jsx/Chart/ExpensesChart"
 
 function App() {
 
@@ -76,7 +77,7 @@ function App() {
             <NewExpense onAddNewExpense={handleAddNewExpense}/>
             <Card className="expenses">
                 <ExpenseFilter currentYearSelected={filteredYear} onChangeFilter={handleFilterChange} />
-
+                <ExpensesChart expenses={filteredExpenses}/>
                 <ExpensesList expenses={filteredExpenses}/>
             </Card>
         </div>
