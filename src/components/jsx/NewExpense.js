@@ -13,7 +13,16 @@ const NewExpense = ({ onAddNewExpense}) => {
 
     const handleSaveExpenseData = (data) => {
         const id = Math.random();
-        onAddNewExpense({ ...data, id: id });
+        
+        const newExpenseObj = {
+            "new-expense-title": data["new-expense-title"],
+            "new-expense-amount": +data["new-expense-amount"],
+            "new-expense-date": data["new-expense-date"],
+            id: id
+        }
+        // console.log("object new ",newExpenseObj);
+        // console.log("old data",data);
+        onAddNewExpense(newExpenseObj);
     };
 
     const handleShowForm = () => {
