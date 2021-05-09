@@ -6,8 +6,8 @@ import "../../styles/Chart.css";
 const Chart = (props) => {
     const valueDataPoints = props.dataPoints.map(dataPoint => dataPoint.value);
 
-    //using spread op to return a comma separated values instead of array
-    const totalMax = Math.max(...valueDataPoints);
+    //get the total amount expended in the current year    
+    const totalMax = valueDataPoints.reduce((a,b) => a + b,0);
 
     return (
         <div className="chart">
